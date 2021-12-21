@@ -2,8 +2,8 @@
 #include <stdlib.h>
 
 
-FILE* config,* cer;
-char passwd[30],sni[30];
+FILE* config;
+char passwd[30];
 int mode;
 
 int main(){
@@ -85,9 +85,6 @@ int UI() {
 
 int install_xray() {
     KernelUpdate(); 
-    config = fopen("/usr/local/etc/sni.conf", "r");
-    fscanf(config, "%s", sni);
-    fclose(config);
     system("setenforce 0");
     system("yum install -y pwgen bind-utils nginx qrencode");
     printf("正在运行xray安装脚本. . .\n");
@@ -98,7 +95,7 @@ int install_xray() {
     system("rm -rf install-release.sh");
     system("rm -rf TCPO.sh");
     printf("正在生成配置文件. . .\n");
-    system("curl https://raw.githubusercontent.com/HXHGTS/shadowsocksServerByXray/main/config.json.1 > /usr/local/etc/xray/config.json");
+    system("curl https://raw.githubusercontent.com/HXHGTS/SSServerByXray/main/config.json.1 > /usr/local/etc/xray/config.json");
     printf("正在生成强密码. . .\n");
     system("pwgen -s 28 1 > /usr/local/etc/xray/passwd.conf");
     config = fopen("/usr/local/etc/xray/passwd.conf", "r");
@@ -107,7 +104,7 @@ int install_xray() {
     config = fopen("/usr/local/etc/xray/config.json", "a");
     fprintf(config, "                        \"password\": \"%s\",\n", passwd);
     fclose(config);
-    system("curl https://raw.githubusercontent.com/HXHGTS/shadowsocksServerByXray/main/config.json.2 >> /usr/local/etc/xray/config.json");
+    system("curl https://raw.githubusercontent.com/HXHGTS/SSServerByXray/main/config.json.2 >> /usr/local/etc/xray/config.json");
     printf("正在启动xray并将xray写入开机引导项. . .\n");
     system("systemctl stop xray");
     system("systemctl enable xray && systemctl start xray");
@@ -129,7 +126,7 @@ int install_xray() {
 
 int QRCodeGen() {
     config = fopen("/usr/local/etc/xray/shadowsocks.txt", "w");
-    fprintf(config, "ss://chacha20-ietf-poly1305:%s@%s:8443\n",passwd,sni);
+    fprintf(config, "ss://chacha20-ietf-poly1305:%s@127.0.0.1:8443\n",passwd);
     fclose(config);
     return 0;
 }
