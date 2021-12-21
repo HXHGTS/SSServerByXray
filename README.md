@@ -1,0 +1,2 @@
+# SSServerByXray
+基于Xray搭建的Shadowsocks脚本
