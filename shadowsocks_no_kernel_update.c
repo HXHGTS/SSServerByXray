@@ -24,9 +24,6 @@ Menu:UI();
         goto Menu;
     }
     else if (mode == 3) {
-        printf("xray二维码:\n\n");
-        system("qrencode -t ansiutf8 < /usr/local/etc/xray/shadowsocks.txt");
-        printf("\n\n");
         printf("shadowsocks链接:\n\n");
         system("cat /usr/local/etc/xray/shadowsocks.txt");
         printf("\n");
@@ -86,7 +83,7 @@ int UI() {
 int install_xray() {
     KernelUpdate(); 
     system("setenforce 0");
-    system("yum install -y pwgen bind-utils qrencode");
+    system("yum install -y bind-utils");
     printf("正在运行xray安装脚本. . .\n");
     system("wget https://cdn.jsdelivr.net/gh/XTLS/Xray-install/install-release.sh -O install-release.sh");
     system("chmod +x install-release.sh");
@@ -97,7 +94,7 @@ int install_xray() {
     printf("正在生成配置文件. . .\n");
     system("curl https://raw.githubusercontent.com/HXHGTS/SSServerByXray/main/config.json.1 > /usr/local/etc/xray/config.json");
     printf("正在生成强密码. . .\n");
-    system("pwgen -s 28 1 > /usr/local/etc/xray/passwd.conf");
+    system("xray uuid > /usr/local/etc/xray/passwd.conf");
     config = fopen("/usr/local/etc/xray/passwd.conf", "r");
     fscanf(config, "%s",passwd);
     fclose(config);
@@ -115,8 +112,6 @@ int install_xray() {
     system("ss -lp | grep xray");
     printf("\n--------------------------------------------------------\n");
     printf("xray部署完成！\n");
-    printf("xray二维码:\n\n");
-    system("qrencode -t ansiutf8 < /usr/local/etc/xray/shadowsocks.txt");
     printf("\n\n");
     printf("shadowsocks链接:\n\n");
     system("cat /usr/local/etc/xray/shadowsocks.txt");
@@ -131,15 +126,6 @@ int QRCodeGen() {
 }
 
 int KernelUpdate() {
-    if ((fopen("KernelUpdate.sh", "r")) == NULL) {
-        printf("正在升级新内核. . .\n");
-        system("wget https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/KernelUpdate.sh -O KernelUpdate.sh");
-        system("chmod +x KernelUpdate.sh");
-        printf("正在升级，将自动触发重启以应用配置. . .\n");
-        system("bash KernelUpdate.sh");
-    }
-    else {
-        system("curl -sSL https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO.sh | sh");
-    }
+    system("curl -sSL https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO.sh | sh");
     return 0;
 }
