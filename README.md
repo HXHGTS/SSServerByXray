@@ -33,4 +33,4 @@ KVM/XEN机器执行(Debian9/10):
 
 2.脚本执行需要root权限登录系统，AWS等特殊机型打开root权限方法[看这里](https://hxhgts.github.io/AWSECSRoot/)
 
-3.请在服务器后台防火墙放行tcp8443(pcsync-https)端口
+3.请在服务器后台防火墙放行tcp 8444端口
