@@ -120,7 +120,7 @@ int install_xray() {
 
 int QRCodeGen() {
     config = fopen("/usr/local/etc/xray/shadowsocks.txt", "w");
-    fprintf(config, "ss://chacha20-ietf-poly1305:%s@127.0.0.1:8443\n",passwd);
+    fprintf(config, "ss://chacha20-ietf-poly1305:%s@127.0.0.1:8444\n",passwd);
     fclose(config);
     return 0;
 }
