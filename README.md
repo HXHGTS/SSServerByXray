@@ -24,6 +24,9 @@ KVM/XEN/Vmware机器执行(Debian9/10):
 
 `apt update && apt install -y build-essential wget && wget https://raw.githubusercontent.com/HXHGTS/SSServerByXray/main/shadowsocks_debian10.c -O shadowsocks.c && chmod +x shadowsocks.c && gcc -o xray shadowsocks.c && ./xray`
 
+KVM/XEN/Vmware机器执行(Debian11):
+
+`apt update && apt install -y build-essential wget && wget https://raw.githubusercontent.com/HXHGTS/SSServerByXray/main/shadowsocks_debian11.c -O shadowsocks.c && chmod +x shadowsocks.c && gcc -o xray shadowsocks.c && ./xray`
 
 第一次点击安装后会自动升级系统内核并触发重启，重启后输入
 
