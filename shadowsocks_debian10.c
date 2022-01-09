@@ -130,6 +130,13 @@ int QRCodeGen() {
 }
 
 int KernelUpdate() {
+    if ((fopen("KernelUpdate.sh", "r")) == NULL) {
+        printf("正在升级新内核. . .\n");
+        system("wget https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/KernelUpdate_debian10.sh -O KernelUpdate.sh");
+        system("chmod +x KernelUpdate.sh");
+        printf("正在升级. . .\n");
+        system("bash KernelUpdate.sh");
+    }
     system("curl -sSL https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO_debian10.sh | sh");
     return 0;
 }
