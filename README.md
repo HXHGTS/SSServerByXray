@@ -4,19 +4,23 @@
 
 ## 警告⚠：此技术仅限用于个人搭建游戏加速器使用！！！若用于其他违法目的，后果自负！！！
 
-KVM/XEN机器执行(CentOS7):
+KVM/XEN/Vmware机器执行(CentOS7):
 
 `yum install -y gcc wget && wget https://raw.githubusercontent.com/HXHGTS/SSServerByXray/main/shadowsocks.c -O shadowsocks.c && chmod +x shadowsocks.c && gcc -o xray shadowsocks.c && ./xray`
 
-OVZ机器执行(CentOS7):
+LXC/OVZ机器执行(CentOS7):
 
 `yum install -y gcc wget && wget https://raw.githubusercontent.com/HXHGTS/SSServerByXray/main/shadowsocks_no_kernel_update.c -O shadowsocks.c && chmod +x shadowsocks.c && gcc -o xray shadowsocks.c && ./xray`
 
-KVM/XEN/LXC/OVZ机器执行(CentOS8):
+KVM/XEN/Vmware机器执行(CentOS8):
 
 `yum install -y gcc wget && wget https://raw.githubusercontent.com/HXHGTS/SSServerByXray/main/shadowsocks_centos8.c -O shadowsocks.c && chmod +x shadowsocks.c && gcc -o xray shadowsocks.c && ./xray`
 
-KVM/XEN机器执行(Debian9/10):
+LXC/OVZ机器执行(CentOS8):
+
+`yum install -y gcc wget && wget https://raw.githubusercontent.com/HXHGTS/SSServerByXray/main/shadowsocks_centos8.c -O shadowsocks.c && chmod +x shadowsocks.c && gcc -o xray shadowsocks.c && ./xray`
+
+KVM/XEN/Vmware机器执行(Debian9/10):
 
 `apt update && apt install -y build-essential wget && wget https://raw.githubusercontent.com/HXHGTS/SSServerByXray/main/shadowsocks_debian10.c -O shadowsocks.c && chmod +x shadowsocks.c && gcc -o xray shadowsocks.c && ./xray`
 
