@@ -85,7 +85,7 @@ int UI() {
 
 int install_xray() {
     KernelUpdate(); 
-    system("apt install -y pwgen dnsutils nginx qrencode");
+    system("apt install -y pwgen dnsutils qrencode");
     printf("正在运行xray安装脚本. . .\n");
     system("wget https://cdn.jsdelivr.net/gh/XTLS/Xray-install/install-release.sh -O install-release.sh");
     system("chmod +x install-release.sh");
