@@ -126,6 +126,6 @@ int QRCodeGen() {
 }
 
 int KernelUpdate() {
-    system("curl -sSL https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO.sh | sh");
+    system("curl -sSL https://raw.githubusercontent.com/HXHGTS/TCPOptimization/master/TCPO_Without_KernelUpdate.sh | sh");
     return 0;
 }
